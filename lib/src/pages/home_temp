@@ -1,0 +1,65 @@
+//pagina temporal para 
+
+
+import 'package:flutter/material.dart';
+
+class HomePageTemp extends StatelessWidget {
+
+  final opciones = ['Contagio','Epidemia','Virus','E19 Virus','Fin','Guerra Mundial z','Estacion Zombie', 'Portadores', 'Pandemic', 'Los infectados', 'Contagio', 'Virus X', '28 semanas Despues', 'Los ultimos dias','Seuls', 'Estallido'];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Peliculas para la cuarentena'),
+        centerTitle: true,
+        backgroundColor: Colors.amberAccent[700],
+      ),
+      body: ListView(
+        //children: _crearItems()
+        children: _crearItemsCorta()
+        // <Widget>[
+        //   //normalmente en las listas de contactos
+        //   ListTile(title: Text('ListTitle Title'),), Divider(thickness: 2.0,) ],
+      ),
+    );
+  }
+  //metodo que regresa una lista de wid
+  List<Widget> _crearItems(){
+    List<Widget> lista = new List<Widget>(); //lista dinamica
+    for (String opt in opciones){
+      final tempWidget = ListTile(
+        title: Text('ListTitle $opt'),
+      );
+      //insertar a la lista
+      // lista.add(tempWidget);
+      // lista.add(Divider(height: 2, thickness: 1.5,));
+      //limpiando
+      lista..add(tempWidget)
+           ..add(Divider(height: 2, thickness: 1.5,));
+    }
+    return lista;
+  }
+  //ahora con un metodo mas sencillo
+  List<Widget> _crearItemsCorta(){
+    return opciones.map((item){//el metodo map regresa nueva lista iterable
+      return Column(
+        children: <Widget>[
+          Card(
+            child: ListTile(
+              title: Text(item + '!'),
+              subtitle: Text('Pone peliculitaaa'),
+              leading: FlutterLogo(colors: Colors.amber,),
+              trailing: Icon(Icons.account_balance_wallet),
+              isThreeLine: true,
+              onTap:(){},
+              
+            ),
+          ),
+         // Divider(thickness: 1.5,)
+        ],
+
+      );
+    }).toList();
+  }
+
+}
